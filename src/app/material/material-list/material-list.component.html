@@ -1,0 +1,6 @@
+<mat-list>
+  <app-item-empleado *ngFor="let empleado of empleados"
+  [empleado]="empleado"
+  (onMouseClick)="onMouseClick($event)">
+  </app-item-empleado>
+</mat-list>

@@ -1,0 +1,6 @@
+<mat-list-item (click)="onClick(empleado)">
+  <img *ngIf="empleado.FotoUrl" [src]="empleado.FotoUrl" alt="" mat-line mat-list-avatar>
+  <img *ngIf="!empleado.FotoUrl" [src]="DEFAULT_AVATAR" alt="" mat-line mat-list-avatar>
+  <span mat-line>{{ empleado.Nombre }}</span> 
+  <span mat-line>{{ empleado.Ciudad }}</span>
+</mat-list-item>
