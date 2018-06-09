@@ -2,13 +2,24 @@
   <button mat-icon-button>    
     <mat-icon>menu</mat-icon>   
   </button>
-  <span>Sistema Integrado de Gestión de Seguridad, Salud Ocupacional y Medio Ambiente </span>
+  <span>Sistema Integrado de Gestión </span>
 </mat-toolbar>
 
 <nav>
+  
+    <a>
+        <button mat-button color="primary" [routerLink]="'/'">
+          Login
+        </button>
+      </a>
   <a>
-    <button mat-button color="primary" [routerLink]="'/'">
+    <button mat-button color="primary" [routerLink]="'/home'">
       Home
+    </button>
+  </a>
+  <a>
+    <button mat-button color="primary" [routerLink]="'/mars'">
+      Mars Rover Image
     </button>
   </a>
   <a>

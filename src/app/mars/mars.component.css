@@ -1,0 +1,17 @@
+.card-container{
+   display: flex;
+   flex-flow: row wrap;
+}
+
+.camera-select{
+    align-items: center;
+}
+.card-content{
+    width: 220px;
+    box-sizing: border-box;
+    margin: 20px auto;
+}
+
+h3{
+    text-align: center;
+}

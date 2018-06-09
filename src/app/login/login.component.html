@@ -1,0 +1,64 @@
+<form #formLogin="ngForm" (ngSubmit)="onSubmit(formLogin)">
+        <div class="card-container">
+     
+                <mat-toolbar class="mat-toolbar-login" color="primary"> 
+                        <h3>Login</h3>
+                        <button mat-icon-button > 
+                                <mat-icon>lock</mat-icon>
+                              </button>
+                </mat-toolbar>
+            
+                <mat-card class="card-content"> 
+                      
+                         
+              <mat-card-header>
+                   
+              </mat-card-header>
+            
+              <mat-card-content>
+               
+                  <div>
+                  <mat-form-field class="full-width">
+                      <span matPrefix><mat-icon>personal</mat-icon> &nbsp; </span>
+                      <input matInput type="text" 
+                      name="UserName"
+                      ngModel 
+                      required 
+                      #userName="ngModel"
+                      width="auto"
+                      placeholder="Usuario">
+                  </mat-form-field>  
+                 </div>
+                  <div>
+                      <mat-form-field class="full-width">
+                           <span matPrefix><mat-icon>vpn_key</mat-icon> &nbsp; </span>
+                           <input matInput type="password" 
+                           name="Password"
+                           ngModel 
+                           required 
+                           #password="ngModel"
+                          placeholder="Contraseña">
+                      </mat-form-field>
+                  </div>
+                   
+              </mat-card-content>
+            
+              <mat-card-actions>
+            
+                <div>
+                     <button mat-raised-button  color="primary" type="submit" [disabled]="!formLogin.valid">Iniciar Sesión</button>
+                     <button mat-raised-button>¿Olvidaste tu Contraseña?</button>
+                </div>
+            
+              </mat-card-actions>
+                </mat-card>
+            </div>
+
+</form>
+
+<p>userName value: {{ userName.value }}</p>
+<p>userName valid: {{ userName.valid }}</p>
+<p>password value: {{ password.value }}</p>
+<p>password valid: {{ password.valid }}</p>
+<p>Form value: {{ formLogin.value | json }}</p>
+<p>Form valid: {{ formLogin.valid }}</p>

@@ -1,0 +1,26 @@
+.card-container{
+    align-items: center;
+ }
+ 
+.mat-toolbar-login{
+    width: 345px;
+    box-sizing: border-box;
+    margin: 0px auto;
+}
+ .card-content{
+     width: 345px;
+     box-sizing: border-box;
+     margin: 0px auto;
+ }
+ 
+ .button-login{
+    margin: 0px auto;
+ }
+
+ h3{
+     text-align: center;
+ }
+
+ .full-width{
+    width: 100%;
+ }

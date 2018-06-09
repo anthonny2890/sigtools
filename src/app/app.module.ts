@@ -16,6 +16,7 @@ import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es-PE';
 import { HttpClientModule } from '@angular/common/http';
 import { MarsModule } from './mars/mars.module';
+import { LoginModule } from './login/login.module';
 
 
 registerLocaleData(localeES, getLanguage);
@@ -32,7 +33,8 @@ registerLocaleData(localeES, getLanguage);
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    MarsModule    
+    MarsModule,
+    LoginModule    
   ],
   providers: [NasaApiService, {
     provide: LOCALE_ID, 
