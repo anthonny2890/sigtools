@@ -16,15 +16,23 @@
               </mat-card-header>
             
               <mat-card-content>
-               
+                <div class="card-container" *ngIf="isLoginError" [@enterAnimation]>
+                    <mat-card class="card-content-error-message alert alert-danger alert-dismissible">
+                        Nombre de usuario o contraseña inválidos.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="isLoginError = !isLoginError">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                    </mat-card>
+                </div>
+                <p></p>
                   <div>
                   <mat-form-field class="full-width">
-                      <span matPrefix><mat-icon>personal</mat-icon> &nbsp; </span>
+                      <span matPrefix><mat-icon>account_box</mat-icon> &nbsp; </span>
                       <input matInput type="text" 
                       name="UserName"
-                      ngModel 
+                      [(ngModel)]="usuario.UserName" 
                       required 
-                      #userName="ngModel"
+                      #UserName="ngModel"
                       width="auto"
                       placeholder="Usuario">
                   </mat-form-field>  
@@ -34,13 +42,14 @@
                            <span matPrefix><mat-icon>vpn_key</mat-icon> &nbsp; </span>
                            <input matInput type="password" 
                            name="Password"
-                           ngModel 
+                           [(ngModel)]="usuario.Password"  
                            required 
-                           #password="ngModel"
+                           #Password="ngModel"
                           placeholder="Contraseña">
                       </mat-form-field>
                   </div>
                    
+                 
               </mat-card-content>
             
               <mat-card-actions>
@@ -54,11 +63,17 @@
                 </mat-card>
             </div>
 
+           
+
 </form>
 
-<p>userName value: {{ userName.value }}</p>
-<p>userName valid: {{ userName.valid }}</p>
-<p>password value: {{ password.value }}</p>
-<p>password valid: {{ password.valid }}</p>
-<p>Form value: {{ formLogin.value | json }}</p>
-<p>Form valid: {{ formLogin.valid }}</p>
+{{ usuario | json }}
+
+<!--Notifications-->
+<jqxNotification #msgNotification
+                 [width]="250" [position]="'top-right'" [opacity]="0.9" [autoOpen]="false"
+                 [autoClose]="true" [animationOpenDelay]="800" [autoCloseDelay]="3000" [template]="'info'">
+  <div>
+      <span id="currentMsg"></span>
+  </div>
+</jqxNotification>

@@ -11,7 +11,8 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
-  },{
+  },
+  {
     path: 'material-base',
     component: MaterialBaseComponent
   },

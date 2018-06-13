@@ -8,4 +8,136 @@ input.ng-invalid.ng-dirty{
 /*for error div i*/
 div.error-message i{
     vertical-align: middle !important;
+    color: #e91e63 !important;
 }
+
+.card-content-error-message{
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0px auto;
+}
+
+.alert-primary {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+.alert-secondary {
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+.alert-light {
+    color: #818182;
+    background-color: #fefefe;
+    border-color: #fdfdfe;
+}
+.alert-dark {
+    color: #1b1e21;
+    background-color: #d6d8d9;
+    border-color: #c6c8ca;
+}
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    border-radius: .25rem;
+}
+
+
+.alert-dismissible {
+    padding-right: 4rem;
+}
+
+.close:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .75rem 1.25rem;
+    color: inherit;
+}
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    border-radius: 0;
+    vertical-align: middle;
+}
+button, input {
+    overflow: visible;
+}
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
+
+.show{
+    visibility: visible;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+[type="reset"], [type="submit"], button, html [type="button"] {
+    -webkit-appearance: button;
+}
+.fade {
+    transition: opacity .15s linear;
+}
+
+.transition{
+    -webkit-transition: opacity 1000ms ease-in-out,margin-left 500ms ease-in-out;
+    -moz-transition: opacity 1000ms ease-in-out,margin-left 500ms ease-in-out;
+    -ms-transition: opacity 1000ms ease-in-out,margin-left 500ms ease-in-out ;
+    -o-transition: opacity 1000ms ease-in-out,margin-left 500ms ease-in-out;
+    transition: opacity 1000ms ease-in-out,margin-left 500ms ease-in-out;
+    opacity: 0;
+  }
+  
+  .transition{
+    opacity: 100;
+    margin-left: 0;
+  }
