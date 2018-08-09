@@ -68,12 +68,3 @@
 </form>
 
 {{ usuario | json }}
-
-<!--Notifications-->
-<jqxNotification #msgNotification
-                 [width]="250" [position]="'top-right'" [opacity]="0.9" [autoOpen]="false"
-                 [autoClose]="true" [animationOpenDelay]="800" [autoCloseDelay]="3000" [template]="'info'">
-  <div>
-      <span id="currentMsg"></span>
-  </div>
-</jqxNotification>

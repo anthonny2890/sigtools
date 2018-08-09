@@ -17,6 +17,7 @@ export class MarsComponent implements OnInit {
   ngOnInit() {
     this.refreshView('FHAZ');
     this.currentCamera = this.cameras[0];
+
   }
 
   onSelectCamera(camera: string){

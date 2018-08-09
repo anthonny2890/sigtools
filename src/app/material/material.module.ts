@@ -20,6 +20,7 @@ import { MaterialButtonComponent } from './material-button/material-button.compo
 import { MaterialInputComponent } from './material-input/material-input.component';
 import { MaterialListComponent } from './material-list/material-list.component';
 import { ItemEmpleadoComponent } from './material-list/item-empleado/item-empleado.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { ItemEmpleadoComponent } from './material-list/item-empleado/item-emplea
     MatCardModule,
     MatProgressSpinnerModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule
   ],
   exports: [
     MatToolbarModule,
@@ -47,8 +49,8 @@ import { ItemEmpleadoComponent } from './material-list/item-empleado/item-emplea
     MatCardModule,
     MatProgressSpinnerModule,
     FormsModule,
-    MatSelectModule
-    
+    MatSelectModule,
+    MatMenuModule    
   ],
   declarations: [MaterialBaseComponent, MaterialButtonComponent, MaterialInputComponent, MaterialListComponent, ItemEmpleadoComponent]
 })

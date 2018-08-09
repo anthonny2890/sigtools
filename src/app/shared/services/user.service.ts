@@ -21,8 +21,18 @@ export class UserService {
 
     let params = urlSearchParams.toString()
    
-    console.log('params', params);
-
     return this.httpClient.post(`${SERVER_URL}Token`, params , {headers : reqHeader});
+  }
+
+  getUserClaims(){
+
+    var userToken = localStorage.getItem('userToken');
+
+    var reqHeader = new HttpHeaders({'Authorization': `Bearer ${userToken}`});
+    
+    return this.httpClient.get(`${SERVER_URL}api/Account/GetUserClaims`, { headers : reqHeader });
+      
+
+
   }
 }

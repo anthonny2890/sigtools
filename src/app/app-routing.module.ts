@@ -5,16 +5,18 @@ import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 import { MarsComponent } from './mars/mars.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
     path: 'material-base',
-    component: MaterialBaseComponent
+    component: MaterialBaseComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -22,11 +24,13 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'mars',
-    component: MarsComponent
+    component: MarsComponent,
+    canActivate: [AuthGuard]
   }
 ]
 

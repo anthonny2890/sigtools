@@ -1,8 +1,28 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button>    
+  
+  <button mat-icon-button [matMenuTriggerFor]="menu">     
     <mat-icon>menu</mat-icon>   
   </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)=getUserClaims()>
+      <mat-icon>account_circle</mat-icon>
+      <span>Mi cuenta</span>
+    </button>
+    <button mat-menu-item (click)=Logout()>
+      <mat-icon>cancel</mat-icon>
+      <span>Cerrar Sesión</span>
+    </button>
+  </mat-menu>
+
+  
+
   <span>Sistema Integrado de Gestión </span>
+  <span align="end" style="flex: 1 1 auto;"></span>
+  <span>{{ userClaims.WelcomeMsg }} </span>
+  
+ 
+
 </mat-toolbar>
 
 <nav>
@@ -29,3 +49,51 @@
   </a>
 </nav>
 <router-outlet></router-outlet>
+
+<!--Notifications-->
+
+<jqxNotification #jqxNotificationInfo
+                 [width]="250" [position]="'top-right'" [opacity]="0.9" [autoOpen]="false"
+                 [autoClose]="true" [animationOpenDelay]="800" [autoCloseDelay]="3000" [template]="'info'">
+  <div>
+      <span id="jqxMsg-info"> </span>
+  </div>
+</jqxNotification>
+<jqxNotification #jqxNotificationSuccess
+                 [width]="250" [position]="'top-right'" [opacity]="0.9" [autoOpen]="false"
+                 [autoClose]="true" [animationOpenDelay]="800" [autoCloseDelay]="3000" [template]="'success'">
+  <div>
+      <span id="jqxMsg-success"> </span>
+  </div>
+</jqxNotification>
+<jqxNotification #jqxNotificationWarning
+                 [width]="250" [position]="'top-right'" [opacity]="0.9" [autoOpen]="false"
+                 [autoClose]="true" [animationOpenDelay]="800" [autoCloseDelay]="3000" [template]="'warning'">
+  <div>
+      <span id="jqxMsg-warning">  </span>
+  </div>
+</jqxNotification>
+<jqxNotification #jqxNotificationError
+                 [width]="250" [position]="'top-right'" [opacity]="0.9" [autoOpen]="false"
+                 [autoClose]="true" [animationOpenDelay]="800" [autoCloseDelay]="3000" [template]="'error'">
+  <div>
+      <span id="jqxMsg-error"> </span>
+  </div>
+</jqxNotification>
+
+<jqxNotification #jqxNotificationMail
+                 [width]="250" [position]="'top-right'" [opacity]="0.9" [autoOpen]="false"
+                 [autoClose]="true" [animationOpenDelay]="800" [autoCloseDelay]="3000" [template]="'mail'">
+  <div>
+      <span id="jqxMsg-mail"> </span>
+  </div>
+</jqxNotification>
+
+
+<jqxNotification #jqxNotificationTime
+                 [width]="250" [position]="'top-right'" [opacity]="0.9" [autoOpen]="false"
+                 [autoClose]="true" [animationOpenDelay]="800" [autoCloseDelay]="3000" [template]="'time'">
+  <div>
+      <span id="jqxMsg-time"> </span>
+  </div>
+</jqxNotification>

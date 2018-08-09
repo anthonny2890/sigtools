@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Empleado } from '../../shared/model/empleado';
 import { ClassEmpleado } from '../../shared/model/class-empleado';
 import { EmptyError } from 'rxjs';
+//import { LoginComponent } from '../../login/login.component';
 
 @Component({
   selector: 'app-material-list',
@@ -12,9 +13,14 @@ export class MaterialListComponent implements OnInit {
 
   empleados:ClassEmpleado[];
 
-  constructor() { }
+  constructor(//private loginComponent: LoginComponent
+  ) {
+
+   }
 
   ngOnInit() {
+
+    //this.loginComponent.showJqxNotification('MaterialListComponent Ready!');
     console.log('Inicializando el componente MaterialList.');
    
     this.empleados = [

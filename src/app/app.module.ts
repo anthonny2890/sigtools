@@ -18,6 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MarsModule } from './mars/mars.module';
 
 import { LoginModule } from './login/login.module';
+import { AuthGuard } from './auth/auth.guard';
+
+import { jqxNotificationComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxnotification';
 
 registerLocaleData(localeES, getLanguage);
 
@@ -25,7 +28,8 @@ registerLocaleData(localeES, getLanguage);
   declarations: [
     AppComponent,
     HomeComponent,
-    LowerCasePipe
+    LowerCasePipe,
+    jqxNotificationComponent 
   ],
   imports: [
     BrowserModule,
@@ -34,9 +38,9 @@ registerLocaleData(localeES, getLanguage);
     MaterialModule,
     HttpClientModule,
     MarsModule,
-    LoginModule  
+    LoginModule 
   ],
-  providers: [NasaApiService, {
+  providers: [NasaApiService, AuthGuard, {
     provide: LOCALE_ID, 
     deps : [SettingApiService], 
     useFactory: getLanguage

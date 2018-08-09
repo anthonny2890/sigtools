@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
-import { jqxNotificationComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxnotification';
 import { UserService } from '../shared/services/user.service';
 import { Usuario } from '../shared/model/usuario';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { AppComponent } from '../app.component';
 
   
 @Component({
@@ -31,20 +31,22 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class LoginComponent implements OnInit {
    
   usuario: Usuario = {"UserName":"", "Password":""};
+  
+  constructor(private userService : UserService, private router: Router, private appComponent: AppComponent) {
 
-  @ViewChild('msgNotification') msgNotification: jqxNotificationComponent;
+
+   }
   
-  constructor(private userService : UserService, private router: Router) { }
-  
-  msg:string;
   isLoginError: boolean;
  
  
   ngOnInit() {}
 
   onSubmit(formLogin: NgForm) {
+
     if(formLogin.valid){
-      this.msg = "Se envío el formulario correctamente.";    
+
+      this.appComponent.showJqxNotificationInfo("Se envío el formulario correctamente.");    
 
       this.userService.userAuthentication(this.usuario.UserName,
          this.usuario.Password).subscribe((result:any) => {
@@ -52,22 +54,19 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userToken', result.access_token);
         this.router.navigate(['/home']);
 
+        this.appComponent.getUserClaims();
+            
+        this.appComponent.showJqxNotificationSuccess("Bienvenido al Sistema Integrado de Gestion!");    
+
       }, (err : HttpErrorResponse)=>{
         this.isLoginError = true;
         console.log('error', err)
 
       });
     }      
-    else
-      this.msg = "El formulario contiene errores.";
-    
-
-   
-    let currentMsg = document.getElementById('currentMsg');
-    currentMsg.innerText = this.msg;
-    this.msgNotification.open();
-
-    //console.log(formLogin.value);  // { first: '', last: '' }
+    else{
+       this.appComponent.showJqxNotificationError("El formulario contiene errores.");
+    }                
     console.log(formLogin.valid);  // false
   }
 
