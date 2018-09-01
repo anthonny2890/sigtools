@@ -14,11 +14,11 @@ export class MyHttpInterceptor implements HttpInterceptor {
 intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
 
-   
+  /*
      if (req.url.indexOf('/upload/file') === -1) {
       return next.handle(req); // do nothing
     }
-    
+    */
 console.log("intercepted request ... ");
 return next.handle(req).pipe(
     catchError((error, caught) => {
