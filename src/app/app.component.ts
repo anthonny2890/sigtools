@@ -2,6 +2,7 @@ import { Component, ViewChild, AfterContentInit  } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './shared/services/user.service';
 import { jqxNotificationComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxnotification';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -51,7 +52,12 @@ export class AppComponent {
       this.userClaims = data;
       this.userClaims.WelcomeMsg = `Bienvenido ${this.userClaims.FirstName}, ${this.userClaims.LastName}`
       console.log("response:", this.userClaims);
-   });
+   }, (err : HttpErrorResponse)=>{
+    
+    console.log('error', err)
+    console.log('descripcion',err.status)
+
+  });
 
   }
   

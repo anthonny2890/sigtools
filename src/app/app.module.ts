@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './home/home.component';
@@ -14,7 +14,8 @@ import { SettingApiService } from './shared/services/setting-api.service';
 
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es-PE';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MyHttpInterceptor } from './shared/services/my-http-interceptor';
 import { MarsModule } from './mars/mars.module';
 
 import { LoginModule } from './login/login.module';
@@ -40,11 +41,21 @@ registerLocaleData(localeES, getLanguage);
     MarsModule,
     LoginModule 
   ],
-  providers: [NasaApiService, AuthGuard, {
-    provide: LOCALE_ID, 
-    deps : [SettingApiService], 
-    useFactory: getLanguage
-  }],
+  providers: [
+    
+    NasaApiService,
+    AuthGuard,  
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: MyHttpInterceptor, 
+        multi: true 
+    },
+    {
+      provide: LOCALE_ID , 
+      deps : [SettingApiService], 
+      useFactory: getLanguage
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
