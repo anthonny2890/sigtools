@@ -1,8 +1,8 @@
-import { Component, ViewChild, AfterContentInit  } from '@angular/core';
+import { Component, ViewChild, Injectable  } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './shared/services/user.service';
 import { jqxNotificationComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxnotification';
-import { HttpErrorResponse } from '@angular/common/http';
+import { DataService } from './shared/services/data.service';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 
-
+@Injectable()
 export class AppComponent {
  
   
@@ -22,53 +22,39 @@ export class AppComponent {
   @ViewChild('jqxNotificationMail') jqxNotificationMail: jqxNotificationComponent;
   @ViewChild('jqxNotificationTime') jqxNotificationTime: jqxNotificationComponent;
  
- template = {
-   
- }
-
-  userClaims = {
-  FirstName : '',
-  LastName : '',
-  FotoUrl : '',
-  WelcomeMsg : ''
-};
+ constructor (private router: Router, private userService: UserService, public dataService: DataService){ }
   
+ template = {}
+
   title = 'app';
   height: number = 50;
-  width: number = 230;
- 
+  width: number = 230; 
   msg:string;
  
 
-
-  constructor (private router: Router, private userService: UserService){ }
-  
-  ngOnInit() {
-    this.getUserClaims();
-  }
+  ngOnInit() {}
  
-  getUserClaims(){
-    this.userService.getUserClaims().subscribe((data:any)=>{
-      this.userClaims = data;
-      this.userClaims.WelcomeMsg = `Bienvenido ${this.userClaims.FirstName}, ${this.userClaims.LastName}`
-      console.log("response:", this.userClaims);
-   }, (err : HttpErrorResponse)=>{
+  Logout(){       
+    //Set SwitchAvatar Mode> Off
+    this.dataService.switchAvatar(false);
     
-    console.log('error', err)
-    console.log('descripcion',err.status)
-
-  });
-
-  }
-  
-  Logout(){
+    //Remove token from Client Side
     localStorage.removeItem('userToken');
-    this.router.navigate(['/login']);
-    this.userClaims.WelcomeMsg = '';   
 
+    //Remove UserClaims
+    localStorage.removeItem('UserName');
+    localStorage.removeItem('FirstName');
+    localStorage.removeItem('LastName');
+    localStorage.removeItem('LoggedOn');
+    localStorage.removeItem('Email');
+    localStorage.removeItem('FotoUrl');
+
+    //Redirect to login page
+    this.router.navigate(['/login']);  
     this.showJqxNotificationWarning("Se cerró la sesión con éxito.");
   }
 
+  //Reusable Notifications
   showJqxNotificationInfo(msg: string){
     var jqxMsg = document.getElementById('jqxMsg-info');
     jqxMsg.innerText = msg;
@@ -103,6 +89,10 @@ export class AppComponent {
     var jqxMsg = document.getElementById('jqxMsg-time');
     jqxMsg.innerText = msg;
     this.jqxNotificationTime.open();
+  }
+
+  showUserClaims (){
+    console.log('userClaims', this.dataService.getUserClaims())
   }
 }
 

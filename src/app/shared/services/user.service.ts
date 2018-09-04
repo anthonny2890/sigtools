@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 const SERVER_URL = 'http://localhost:63679/';
 
@@ -26,13 +25,11 @@ export class UserService {
 
   getUserClaims(){
 
-    var userToken = localStorage.getItem('userToken');
+    //var userToken = localStorage.getItem('userToken');
 
-    var reqHeader = new HttpHeaders({'Authorization': `Bearer ${userToken}`});
+    //var reqHeader = new HttpHeaders({'Authorization': `Bearer ${userToken}`}); // , { headers : reqHeader }
     
-    return this.httpClient.get(`${SERVER_URL}api/Account/GetUserClaims`, { headers : reqHeader });
+    return this.httpClient.get(`${SERVER_URL}api/Account/GetUserClaims`);
       
-
-
   }
 }

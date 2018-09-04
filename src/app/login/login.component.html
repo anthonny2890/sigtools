@@ -18,7 +18,7 @@
               <mat-card-content>
                 <div class="card-container" *ngIf="isLoginError" [@enterAnimation]>
                     <mat-card class="card-content-error-message alert alert-danger alert-dismissible">
-                        Nombre de usuario o contraseña inválidos.
+                        <span>{{ errorMessage }}</span>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="isLoginError = !isLoginError">
                             <span aria-hidden="true">×</span>
                           </button>
@@ -56,7 +56,7 @@
             
                 <div>
                      <button mat-raised-button  color="primary" type="submit" [disabled]="!formLogin.valid">Iniciar Sesión</button>
-                     <button mat-raised-button>¿Olvidaste tu Contraseña?</button>
+                     <button mat-raised-button (click)="onClickForgotPassword($event)">¿Olvidaste tu Contraseña?</button>
                 </div>
             
               </mat-card-actions>

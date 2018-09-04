@@ -30,7 +30,7 @@ registerLocaleData(localeES, getLanguage);
     AppComponent,
     HomeComponent,
     LowerCasePipe,
-    jqxNotificationComponent 
+    jqxNotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -42,13 +42,13 @@ registerLocaleData(localeES, getLanguage);
     LoginModule 
   ],
   providers: [
-    
+    AppComponent,
     NasaApiService,
     AuthGuard,  
     {
         provide: HTTP_INTERCEPTORS,
         useClass: MyHttpInterceptor, 
-        multi: true 
+        multi: true
     },
     {
       provide: LOCALE_ID , 

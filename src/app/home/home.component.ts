@@ -2,6 +2,8 @@ import { Component, OnInit, PipeTransform, Pipe } from '@angular/core';
 import { Apod } from '../shared/model/apod';
 import { NasaApiService } from '../shared/services/nasa-api.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AppComponent } from '../app.component';
+import { DataService } from '../shared/services/data.service';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -20,7 +22,7 @@ export class HomeComponent implements OnInit {
   apod: Apod;
  error: string;
 
-  constructor(private nasaApi: NasaApiService, domSanitizer: DomSanitizer) { }
+  constructor(private nasaApi: NasaApiService,private dataService: DataService, private appComponent: AppComponent, domSanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.nasaApi.getApod()
@@ -34,6 +36,8 @@ export class HomeComponent implements OnInit {
 
       setTimeout(() => {
         this.error = 'Error al conectar con el Servidor.';
+        this.appComponent.showJqxNotificationError(this.error);
+        
       }, 2000);
       
       console.log(this.error)
